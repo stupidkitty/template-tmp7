@@ -26,6 +26,15 @@ module.exports = {
         'vue$': 'vue/dist/vue.esm.js',
       }
     }, */
+    module: {
+      rules: [{
+        test: /\.(png|jpg|jpeg|webp|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      }]
+    },
     plugins: [
       new CopyPlugin([
         { from: 'src/assets/img', to: outputDirectory + '/img' },
@@ -62,6 +71,20 @@ module.exports = {
       filename: 'video.html',
       title: 'Video Page',
       chunks: ['chunk-vendors', 'chunk-common', 'video']
+    }
+  },
+  css: {
+    loaderOptions: {
+      css: {
+        url: (url, resourcePath) => {
+          // Don't handle `.png` urls
+          if (url.includes('.png')) {
+            return false
+          }
+
+          return true
+        }
+      }
     }
   }
 }
