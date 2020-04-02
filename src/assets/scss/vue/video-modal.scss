@@ -1,0 +1,67 @@
+.video-modal-container {
+  background: #fff;
+
+  & .content-box__left-col {
+    padding: 0;
+    border: none;
+  }
+}
+
+.modal {
+  &__control-bar {
+    display: flex;
+    height: 37px;
+    padding: 2px 5px;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    background-color: #333;
+
+    &.-sticky {
+      @media screen and (max-width: 992px) and (orientation: portrait) {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        max-width: 992px;
+        z-index: 98;
+      }
+    }
+  }
+
+  &__close {
+    border: 0;
+    background: none;
+    margin: 0;
+    padding: 5px;
+    line-height: 1;
+    outline: 0;
+  }
+
+  &__close,
+  &__back {
+    width: 32px;
+    border: 0;
+    background: none;
+    margin: 0;
+    padding: 4px;
+    line-height: 1;
+    outline: 0;
+    fill: #b3b3b3;
+
+    &:hover {
+      cursor: pointer;
+      fill: #e8e8e8;
+    }
+  }
+
+  &__close-icon {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+div.modal__control-bar.-sticky + div.content-box {
+  @media screen and (max-width: 992px) and (orientation: portrait) {
+    padding-top: 37px;
+  }
+}

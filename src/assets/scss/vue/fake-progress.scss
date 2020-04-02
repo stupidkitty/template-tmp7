@@ -1,0 +1,29 @@
+.fake-progress {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  left: 0;
+  margin-bottom: 0;
+  right: 0;
+  top: 0;
+  background: #000;
+
+  &__bar {
+    background: $previewProgressColor;
+    height: 2px;
+    width: 0;
+    animation-delay: 0.1s;
+    animation-name: previewloadprogress;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes previewloadprogress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}

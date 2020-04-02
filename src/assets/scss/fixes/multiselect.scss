@@ -1,0 +1,71 @@
+.multiselect {
+  color: #f3f3f3;
+
+  &__tags {
+    background: #151515;
+    border: 1px solid #2f2f2f;
+    border-radius: 2px;
+  }
+
+  &__content-wrapper {
+    background: #151515;
+    border: 1px solid #2f2f2f;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
+
+  &--above &__content-wrapper {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-top: 1px solid #2f2f2f;
+  }
+
+  &__input,
+  &__single {
+    color: #f3f3f3;
+    border-radius: 2px;
+    background: #151515;
+
+    &::placeholder {
+      color: #828282;
+    }
+  }
+
+  &__tag {
+    padding: 9px 34px 9px 10px;
+    border-radius: 2px;
+    margin-right: 5px;
+    background: #118c8d;
+    background: linear-gradient(to top,#118c8d 0,#0bd9db 100%);
+    margin-bottom: 5px;
+    border: 1px solid #139a9c;
+    font-weight: 700;
+
+    &-icon {
+      width: 30px;
+      line-height: 32px;
+      border-radius: 2px;
+      background: #118c8d;
+      background: linear-gradient(to top,#118c8d 0,#0bd9db 100%);
+
+      &:focus,
+      &:hover {
+        cursor: pointer;
+        background: linear-gradient(to top,#106465 0,#0cb5b7 100%);
+      }
+    }
+  }
+
+  &__option {
+    &--selected {
+      background: #353535;
+      color: #f3f3f3;
+      font-weight: 700;
+
+      &--highlight {
+        background: #ff6a6a;
+        color: #f3f3f3;
+      }
+    }
+  }
+}

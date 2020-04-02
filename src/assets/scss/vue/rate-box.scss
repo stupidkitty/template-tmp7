@@ -1,0 +1,52 @@
+.rate-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+
+  @media screen and (min-width: $screenSmall) {
+    width: 200px;
+  }
+
+  &__vote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    line-height: 1;
+
+    & i {
+      font-size: 1.625rem;
+      margin-right: 5px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__bar {
+    margin-top: 10px;
+    width: 100%;
+    height: 3px;
+    background-color: #ccc;
+  }
+
+  &__progress {
+    color: #f0f0f0;
+    height: 100%;
+    background-color: $color1;
+  }
+
+  &__like-icon {
+    color: $color1;
+  }
+
+  &__dislike-icon {
+    color: #666;
+  }
+}
