@@ -1,10 +1,10 @@
 import '@/assets/scss/main.scss'
 
-/* import AppOpt from '@/js/AppOpt.js'
+import AppOpt from '@/js/AppOpt.js'
 import 'whatwg-fetch'
 import Vue from 'vue'
 // import ClipboardJS from 'clipboard'
-import VModal from 'vue-js-modal'
+// import VModal from 'vue-js-modal'
 import VideoViewModal from '@/components/modals/VideoViewModal.vue'
 import ScrollToTop from '@/components/ui/ScrollToTop.vue'
 // import FlagButton from '@/components/ui/FlagButton.vue'
@@ -20,7 +20,7 @@ import Rotator from '@/js/Rotator.js'
 // import 'tippy.js/animations/scale.css'
 
 Vue.config.productionTip = false
-Vue.use(VModal, { dynamic: true })
+// Vue.use(VModal, { dynamic: true })
 
 Vue.prototype.$eventHub = new Vue()
 
@@ -38,27 +38,27 @@ new Vue({
   created () {
     if (AppOpt.Rotator.enabled) {
       this.$eventHub.$on('category-click', (event, category) => {
-        let data = window.btoa(JSON.stringify({ id: category.id }))
+        const data = window.btoa(JSON.stringify({ id: category.id }))
 
         Rotator.registerCategoryClick(data)
       })
 
       this.$eventHub.$on('thumb-click', (event, video) => {
-        let data = window.btoa(JSON.stringify(video))
+        const data = window.btoa(JSON.stringify({ id: video.id, imageId: video.imageId }))
 
         Rotator.registerVideoClick(data)
       })
     }
   }
-}).$mount('#app') */
+}).$mount('#app')
 
 /**
  * Сбор статистики для ротатора
  */
-/* if (AppOpt.Rotator.enabled) {
+if (AppOpt.Rotator.enabled) {
   Rotator.configure(AppOpt.Rotator)
   Rotator.run()
-} */
+}
 
 /**
  * Кнопка копирования урла страницы в просмотре видео
@@ -100,3 +100,5 @@ toggeSuggestButton.forEach(function (el) {
     }
   })
 }) */
+
+require('./js/ui-addititional.js')
