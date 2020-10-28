@@ -1,26 +1,53 @@
+
 @import "~bootstrap/scss/functions";
+@import 'variables';
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/utilities";
 
-@import 'variables';
 @import 'mixins/aspect-ratio';
-@import 'app';
+@import "layout";
+@import "typography";
+@import "info";
+@import "more-nav";
+@import "buttons";
+@import "thumbs-nav-bar";
+@import "thumbs-grid";
+@import "thumb";
+@import "tags";
+@import "tags-buttons";
+@import "page-header";
+@import "menu";
+@import "categories";
+@import "sort-thumbs";
+@import "pagination";
+@import "player";
+@import "video";
+@import "video-actions";
+@import "video-details";
+@import "video-desc";
+@import "video-info-container";
+@import "footer";
+@import "helper";
 
 /**
  * Дальше стили
  */
 
- /**
-  * Стили компонентов для vue
-  */
-// @import 'vue/rate-box';
-// @import 'vue/fake-progress';
-// @import 'vue/scroll-to-top';
+/**
+ * Стили компонентов для vue
+ */
+@import 'vue/vote-box';
+@import 'vue/fake-progress';
+@import 'vue/scroll-to-top';
 // @import 'vue/flag-modal';
 // @import 'vue/flag-button';
-// @import 'vue/video-preview';
-// @import 'vue/video-modal';
-// @import 'fixes/vue-modal';
+@import 'vue/video-preview';
+@import 'vue/video-modal';
+@import 'fixes/vue-modal';
