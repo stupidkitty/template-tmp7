@@ -9,7 +9,7 @@
   background: #000;
 
   &__bar {
-    background: $previewProgressColor;
+    background: $component-primary-hover-bg;
     height: 2px;
     width: 0;
     animation-delay: 0.1s;

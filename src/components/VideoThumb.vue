@@ -16,7 +16,7 @@ export default {
     return {
     }
   },
-  mounted() {
+  mounted () {
     this.$emit('thumb-created', this.video)
   },
   computed: {
@@ -28,6 +28,15 @@ export default {
     },
     publishedAtHumanized () {
       return Humanizer.timeAgo(this.video.publishedAt)
+    },
+    likesPercent () {
+      if (this.video.dislikes === 1) {
+        return 100
+      }
+
+      const likesPercent = (this.video.likes / (this.video.likes + this.video.dislikes)) * 100
+
+      return Number.parseInt(likesPercent, 10)
     }
   },
   methods: {

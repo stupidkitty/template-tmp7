@@ -8,7 +8,7 @@
   width: 40px;
   height: 40px;
   padding: 5px;
-  background: rgba(0,0,0,0.8);
+  background: rgba(33, 49, 65, 0.8);
   box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),
               0 6px 10px 0 rgba(0,0,0,.14),
               0 1px 18px 0 rgba(0,0,0,.12);
@@ -24,12 +24,12 @@
   transition: opacity .3s 0s,visibility 0s .3s,background-color .3s 0s;
   z-index: 999;
 
-  @media only screen and (min-width: $screenMedium) {
+  @include media-breakpoint-up(md) {
     right:20px;
     bottom: 20px;
   }
 
-  @media only screen and (min-width: $screenLarge) {
+  @include media-breakpoint-up(lg) {
     width: 56px;
     height: 56px;
     padding: 8px;
@@ -42,7 +42,7 @@
   }
 
   &:hover {
-    background-color: #333;
+    background-color: #3c6a96;
     box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),
                 0 8px 10px 1px rgba(0,0,0,.14),
                 0 3px 14px 2px rgba(0,0,0,.12);
@@ -57,7 +57,7 @@
 
   & > img, & > i {
     display: block;
-    max-width: 100%;
+    width: 100%;
     height: auto;
     object-fit: contain;
   }
