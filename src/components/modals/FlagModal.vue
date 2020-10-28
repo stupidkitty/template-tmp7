@@ -27,13 +27,13 @@
       </ul>
 
       <div class="flag-modal__row">
-        <label class="flag-modal__label">Email</label>
-        <input type="email" v-model="email" class="flag-modal__field" placeholder="Please leave your email" required>
+        <label class="flag-modal__label" for="flagEmail">Email</label>
+        <input type="email" v-model="email" id="flagEmail" class="flag-modal__field" placeholder="Please leave your email" required>
       </div>
 
       <div class="flag-modal__row">
-        <label class="flag-modal__label">Reason</label>
-        <textarea v-model="reason" rows="5" class="flag-modal__field" placeholder="Your comment"></textarea>
+        <label class="flag-modal__label" for="flagReason">Reason</label>
+        <textarea v-model="reason" id="flagReason" rows="5" class="flag-modal__field" placeholder="Your comment"></textarea>
       </div>
     </section>
 
@@ -92,7 +92,7 @@ export default {
       return this.reasonTypes.indexOf(this.selectedReasonType) !== -1
     },
     isValidEmail (email) {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      const re = /^(([^<>()[]\\.,;:\s@"]+(\.[^<>()[]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
       return re.test(String(email).toLowerCase())
     },
@@ -131,7 +131,7 @@ export default {
         return
       }
 
-      let report = {
+      const report = {
         type: this.selectedReasonType.type,
         reason: this.reason,
         email: this.email,
@@ -143,6 +143,9 @@ export default {
       fetch('https://24support.cc/api/v1/abuse/', {
         cache: 'no-cache',
         method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify(report)
       })
         .then((response) => {
@@ -153,7 +156,7 @@ export default {
           return response
         })
         .then(response => response.json())
-        .then((response) => {
+        .then(() => {
           this.$emit('reported')
         })
         .catch((err) => {
