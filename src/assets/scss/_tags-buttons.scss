@@ -1,0 +1,36 @@
+.tags-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__tag {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+  }
+
+  &__label {
+    color: #c9daeb;
+  }
+
+  &__btn {
+    background-color: #3c6a97;
+    color: #f0f0f0;
+    display: block;
+    padding: 0 10px;
+    border-radius: 4px;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: #34c9ff;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

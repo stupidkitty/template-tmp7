@@ -1,0 +1,63 @@
+.menu {
+	display: block;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: -300px;
+	background-color: $bg2;
+	border-left: 2px solid #34c9ff;
+	padding: 50px 0 0 0;
+	transition: 0.2s;
+	z-index: 999;
+
+	@media all and (min-width: $screen-xl) {
+		position: relative;
+		right: 0;
+		border: 0;
+		padding: 0;
+	}
+
+	&_isActive {
+		right: 0;
+	}
+
+	&__list {
+		margin-bottom: 0;
+		padding: 0;
+
+		@media all and (min-width: $screen-xl) {
+			margin-left: auto;
+		}
+	}
+
+	&__item {
+    list-style-type: none;
+	}
+
+  &__link {
+  	display: block;
+    color: $font1;
+    display: block;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 5px 10px 5px 10px;
+    transition: 0.2s;
+
+			@media all and (min-width: $screen-xl) {
+				padding: 5px 20px 5px 20px;
+				font-size: 16px;
+			}
+
+	    &:hover {
+		   color: $font2;
+    		text-decoration: none;
+		 	}
+
+	    &_active {
+			   color: $font2;
+	    }
+
+    }
+
+}

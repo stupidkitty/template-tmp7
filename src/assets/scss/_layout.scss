@@ -1,0 +1,38 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+input,
+button {
+  font-family: $font-family-base;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+}
+
+.content {
+  display: block;
+  flex-grow: 1;
+  margin-bottom: 30px;
+}
+
+.mx-min-1 {
+  margin: 0 -0.25rem !important;
+}
+
+.mx-min-1-rightcol {
+  margin: 0 -0.25rem !important;
+
+  @include media-breakpoint-up(lg) {
+    margin: 0 !important;
+  }
+}

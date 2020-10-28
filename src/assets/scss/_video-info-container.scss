@@ -1,0 +1,5 @@
+.video-info-container {
+    @include media-breakpoint-up(lg) {
+        padding-right: $grid-gutter-width / 2;
+    }
+}

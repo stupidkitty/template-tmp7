@@ -1,0 +1,10 @@
+.info {
+  font-size: $font-size-sm;
+  text-align: center;
+  line-height: 1.3;
+
+  @include media-breakpoint-up(md) {
+    padding: 0 10px;
+    text-align: justify;
+  }
+}

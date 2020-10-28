@@ -1,0 +1,18 @@
+.btn {
+
+  &-primary:hover {
+    color: $component-primary-hover-color;
+    background: $component-primary-hover-bg;
+  }
+
+  &_cats {
+    font-size: 18px;
+    color: #fff;
+    background: $bg3;
+
+    &:hover {
+      background: $bg4;
+      color: #fff;
+    }
+  }
+}

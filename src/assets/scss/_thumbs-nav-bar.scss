@@ -1,0 +1,16 @@
+.thumbs-nav-bar {
+  display: block;
+  margin: 1rem 0;
+
+  &.-top {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}

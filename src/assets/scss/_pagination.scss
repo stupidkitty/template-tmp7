@@ -1,0 +1,138 @@
+.pagination {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  &.-top {
+    display: none;
+
+    @media all and (min-width: $screen-md) {
+      display: flex;
+    }
+  }
+}
+
+.pagination__item {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+@media (min-width: $screen-md) {
+  .pagination__item {
+    flex-grow: 0;
+  }
+}
+
+.pagination__item.first,
+.pagination__item.last {
+  display: none;
+}
+
+@media (min-width: 980px) {
+  .pagination__item.first,
+  .pagination__item.last {
+    display: block;
+  }
+}
+
+.pagination__item.delta2 {
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .pagination__item.delta2 {
+    display: block;
+  }
+}
+
+.pagination__item.delta3 {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .pagination__item.delta3 {
+    display: block;
+  }
+}
+
+.pagination__item.delta4 {
+  display: none;
+}
+
+@media (min-width: 980px) {
+  .pagination__item.delta4 {
+    display: block;
+  }
+}
+
+.pagination__link {
+  position: relative;
+  display: block;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  box-sizing: border-box;
+  line-height: 1.25;
+}
+
+.pagination__item.disabled .pagination__link {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.pagination__item + .pagination__item {
+  margin-left: 3px;
+}
+
+.pagination__item.dots {
+  flex-grow: 0;
+}
+
+.pagination__item.dots .pagination__link {
+  padding: 0.6rem 0.4rem;
+}
+
+.pagination-container {
+  padding: 10px 5px;
+  clear: both;
+}
+
+.pagination {
+  justify-content: center;
+  text-align: center;
+  padding: 0 5px;
+}
+
+.pagination__link {
+  background-color: $bg3;
+  color: #ffffff;
+  font-size: 16px;
+
+  @media all and (min-width: $screen-md) {
+    font-size: 18px;
+  }
+}
+
+.pagination__item.active .pagination__link {
+  text-decoration: none;
+  background: $bg4;
+  color: #fff;
+}
+
+.pagination__link:hover,
+.pagination__link:active,
+.pagination__link:focus {
+  text-decoration: none;
+  background: $bg4;
+  color: #fff;
+}
+
+.pagination__item.dots .pagination__link {
+  background: 0;
+  border: 0;
+  font-size: 14px;
+  font-weight: normal;
+  color: #969696;
+  box-shadow: none;
+  letter-spacing: 2px;
+}

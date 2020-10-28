@@ -1,0 +1,20 @@
+.img-icon {
+  display: inline-block;
+  width: $font-size-base;
+  height: auto;
+  object-fit: scale-down;
+
+  &.-x2 {
+    width: $font-size-base * 2;
+  }
+}
+
+.plank {
+  display: inline-flex;
+  white-space: nowrap;
+
+  & > i,
+  & > img {
+    margin-right: 5px;
+  }
+}

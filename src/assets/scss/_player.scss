@@ -1,0 +1,16 @@
+.player {
+  @include aspect-ratio(16, 9);
+
+  &-aside {
+    @include media-breakpoint-up(lg) {
+      padding-left: 3px!important;
+    }
+  }
+}
+
+.row .player {
+  @include media-breakpoint-down(md) {
+    margin-left: -$grid-gutter-width / 2;
+    margin-right: -$grid-gutter-width / 2;
+  }
+}

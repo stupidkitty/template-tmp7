@@ -1,0 +1,41 @@
+.footer {
+	padding: $footer-padding-y $footer-padding-x;
+	background-color: $footer-bg;
+	color: $footer-color;
+	font-size: $footer-font-size;
+	text-align: center;
+
+	@include media-breakpoint-up(xl) {
+	  padding: $footer-padding-y $footer-padding-x * 3;
+	}
+
+	&__text1 {
+		color: $footer-link-color;
+	}
+}
+
+.footer-links {
+	&__link {
+		color: $footer-link-color;
+		&:hover {
+			color: $footer-link-hover;
+		}
+	}
+}
+
+.footer-copyright {
+	color: $footer-copyright-color;
+
+	&__sitename {
+		color: $footer-copyright-sitename-color;
+
+		&:hover {
+			color: $footer-copyright-sitename-hover;
+		}
+	}
+}
+
+.footer-age-warning {
+	color: $footer-age-warning-color;
+	line-height: 1.25;
+}

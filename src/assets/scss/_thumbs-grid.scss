@@ -1,0 +1,116 @@
+.thumbs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0 (-$thumbs-grid-gap / 2);
+  list-style: none;
+
+  &__cell {
+    width: 100%;
+    padding: 0 ($thumbs-grid-gap / 2);
+    margin-bottom: $thumbs-grid-gap;
+
+    @if ($thumbs-grid-max-cols >= 2) {
+      @include media-breakpoint-up(sm) {
+        width: 1/2 * 100%; // 2 тумбы в ряд
+      }
+    }
+
+    @if ($thumbs-grid-max-cols >= 3) {
+      @include media-breakpoint-up(md) {
+        width: 1/3 * 100%; // 3 тумбы в ряд
+      }
+    }
+
+    @if ($thumbs-grid-max-cols >= 4) {
+      @include media-breakpoint-up(lg) {
+        width: 1/4 * 100%; // 4 тумбы в ряд
+      }
+    }
+
+    @if ($thumbs-grid-max-cols >= 5) {
+      @include media-breakpoint-up(xl) {
+        width: 1/5 * 100%; // 4 тумбы в ряд
+      }
+    }
+  }
+
+  &.-modal > &__cell {
+    width: 100%;
+    padding: 0 ($thumbs-grid-gap / 2);
+    margin-bottom: $thumbs-grid-gap;
+
+    @if ($thumbs-grid-max-cols >= 2) {
+      @include media-breakpoint-up(sm) {
+        width: 1/2 * 100%; // 2 тумбы в ряд
+      }
+    }
+
+    @if ($thumbs-grid-max-cols >= 3) {
+      @include media-breakpoint-up(md) {
+        width: 1/3 * 100%; // 3 тумбы в ряд
+      }
+    }
+
+    @if ($thumbs-grid-max-cols >= 4) {
+      @include media-breakpoint-up(lg) {
+        width: 1/3 * 100%; // 4 тумбы в ряд
+      }
+    }
+
+    @if ($thumbs-grid-max-cols >= 5) {
+      @include media-breakpoint-up(xl) {
+        width: 1/3 * 100%; // 4 тумбы в ряд
+      }
+    }
+  }
+
+  /*&.-aside {
+    padding: 0;
+  }*/
+
+  &.-aside &__cell {
+    @media screen and (min-width: 576px) and (max-width: 992px - 1px) {
+      // margin-bottom: 0;
+    }
+
+    @media screen and (min-width: 992px) {
+      width: 100%!important;
+    }
+
+    &:last-child {
+      // margin-bottom: 0;
+
+      @media screen and (min-width: 576px) and (max-width: 768px - 1px) {
+        display:none
+      }
+
+      @media screen and (min-width: 992px) and (max-width: 1260px) {
+        display: none;
+      }
+    }
+  }
+
+  /*&.-as-related-col &__cell {
+      @media screen and (min-width: $screenSmall) and (max-width: $screenLarge - 1px) {
+        margin-bottom: 0;
+      }
+
+      @media screen and (min-width: $screenLarge) {
+        width: 100%!important;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+
+        @media only screen and (min-width: $screenSmall) and (max-width:759px) {
+          display:none
+        }
+
+        @media all and (min-width: $screenLarge) and (max-width: 1280px) {
+          display: none;
+        }
+      }
+    }*/
+}
