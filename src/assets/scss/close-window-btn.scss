@@ -1,0 +1,60 @@
+.close-window-btn {
+  position: relative;
+  margin: 20px auto;
+  width: 70px;
+  cursor: pointer;
+
+  &-in {
+    width: inherit;
+    text-align: center;
+
+    &:before, &:after {
+      position: absolute;
+      content: '';
+      height: 4px;
+      width: inherit;
+      background: #337AB7;
+      left: 0;
+      transition: all .3s ease-in;
+    }
+
+    &:before {
+      top: calc(50% - 4px);
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      bottom: 50%;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &-txt {
+    font-size: 13px;
+    line-height: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #337AB7;
+    transition: all .3s ease-in;
+    opacity: 0;
+    cursor: pointer;
+    font-family: Verdana;
+  }
+
+  &:hover &-txt {
+    opacity: 1;
+  }
+
+  &:hover &-in:before,
+  &:hover &-in:after {
+    transform: rotate(0);
+  }
+
+  &:hover &-in:before {
+    top: 0;
+  }
+
+  &:hover &-in:after {
+    bottom: 0;
+  }
+}
