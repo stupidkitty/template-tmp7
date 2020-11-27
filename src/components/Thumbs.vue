@@ -30,7 +30,7 @@ export default {
         height: 'auto',
         adaptive: true,
         scrollable: true,
-        pivotY: 0.5,
+        pivotY: 0,
         name: 'videoViewModal'
       })
     }
@@ -39,10 +39,10 @@ export default {
     return {
       defaultLocationUrl: '',
       startedPreview: []
-    };
+    }
   },
   created () {
-    this.defaultLocationUrl = window.location.href;
+    this.defaultLocationUrl = window.location.href
 
     // Attach onpopstate event handler
     /* window.addEventListener('popstate', (event) => {
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     onThumbClick (event, video) {
-      if (true === this.openModal) {
+      if (this.openModal === true) {
         this.openVideoModal(video)
       }
 
