@@ -14,7 +14,7 @@
             @loadstart="startLoadVideo"
             @canplay="endLoadVideo"
             @error="errorLoadVideo"
-            @contextmenu.native.prevent.stop=""></video>
+            @contextmenu.prevent.stop=""></video>
     <slot></slot>
     <play-preview-button :css-class="playButton.cssClass" :is-play-now="display" @click="togglePreviewPlay" v-if="playButton.enabled">
       <template v-slot:play>
