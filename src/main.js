@@ -4,7 +4,7 @@ import AppOpt from '@/js/AppOpt.js'
 import 'whatwg-fetch'
 import Vue from 'vue'
 // import ClipboardJS from 'clipboard'
-// import VModal from 'vue-js-modal'
+import VModal from 'vue-js-modal'
 import VideoViewModal from '@/components/modals/VideoViewModal.vue'
 import ScrollToTop from '@/components/ui/ScrollToTop.vue'
 // import FlagButton from '@/components/ui/FlagButton.vue'
@@ -20,7 +20,7 @@ import Rotator from '@/js/Rotator.js'
 // import 'tippy.js/animations/scale.css'
 
 Vue.config.productionTip = false
-// Vue.use(VModal, { dynamic: true })
+Vue.use(VModal, { dynamic: true })
 
 Vue.prototype.$eventHub = new Vue()
 
@@ -100,5 +100,3 @@ toggeSuggestButton.forEach(function (el) {
     }
   })
 }) */
-
-require('./js/ui-addititional.js')
