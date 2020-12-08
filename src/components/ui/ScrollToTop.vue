@@ -42,14 +42,14 @@ export default {
         !window.requestAnimationFrame ? setTimeout(this.checkBackToTop, 250) : window.requestAnimationFrame(this.checkBackToTop)
       }
 
-      let scrollOffset = window.pageYOffset || document.documentElement.scrollTop // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+      const scrollOffset = window.pageYOffset || document.documentElement.scrollTop // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
 
       this.isShow = !!((scrollOffset < this.lastScrollOffset && scrollOffset >= this.offset))
 
       this.lastScrollOffset = scrollOffset <= 0 ? 0 : scrollOffset // For Mobile or negative scrolling
     },
     checkBackToTop () {
-      let scrollOffset = window.pageYOffset || document.documentElement.scrollTop
+      const scrollOffset = window.pageYOffset || document.documentElement.scrollTop
 
       if (this.isShow === true && scrollOffset <= this.offset) {
         this.isShow = false
@@ -64,16 +64,16 @@ export default {
         return
       }
 
-      let start = window.pageYOffset || document.documentElement.scrollTop
+      const start = window.pageYOffset || document.documentElement.scrollTop
       let currentTime = null
 
-      let animateScroll = (timestamp) => {
+      const animateScroll = (timestamp) => {
         if (!currentTime) {
           currentTime = timestamp
         }
 
-        let progress = timestamp - currentTime
-        let val = Math.max(this.easeInOutQuad(progress, start, -start, this.duration), 0)
+        const progress = timestamp - currentTime
+        const val = Math.max(this.easeInOutQuad(progress, start, -start, this.duration), 0)
 
         window.scrollTo(0, val)
 

@@ -22,7 +22,7 @@ export default {
     }
   },
   mounted () {
-    let votedVideos = this.getFromStorage('votedVideos')
+    const votedVideos = this.getFromStorage('votedVideos')
 
     if (votedVideos !== null) {
       this.votedVideos = votedVideos
@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     likesPercent () {
-      let totalVotes = this.likes + this.dislikes
+      const totalVotes = this.likes + this.dislikes
 
       if (totalVotes === 0) {
         return 0

@@ -44,12 +44,12 @@ export default {
     })
 
     this.$on('history-back', function (video) {
-      let index = this.videosHistory.indexOf(video)
+      const index = this.videosHistory.indexOf(video)
 
       if (index <= 0) {
         this.$emit('close')
       } else {
-        let previousVideo = this.videosHistory[index - 1]
+        const previousVideo = this.videosHistory[index - 1]
 
         this.video = previousVideo
         this.loadRelated()
@@ -86,7 +86,7 @@ export default {
       return [] === this.videosHistory.filter(o => { return o.id === video.id })
     },
     loadVideo (newId) {
-      let url = '/api/v1/video/' + newId + '/'
+      const url = '/api/v1/video/' + newId + '/'
 
       fetch(url, {
         // cache: 'no-cache',
@@ -102,8 +102,8 @@ export default {
         })
         .then(response => response.json())
         .then((response) => {
-          let result = response.result
-          let video = result.video
+          const result = response.result
+          const video = result.video
 
           /* if (errors.length > 0) {
             errors.forEach((el) => {
@@ -118,7 +118,7 @@ export default {
         .catch(err => this.errors.push(err.message))
     },
     loadRelated () {
-      let url = '/api/v1/video/' + this.video.id + '/related/'
+      const url = '/api/v1/video/' + this.video.id + '/related/'
 
       fetch(url, {
         method: 'GET'
@@ -132,8 +132,8 @@ export default {
         })
         .then(response => response.json())
         .then((response) => {
-          let result = response.result
-          let videos = result.relatedVideos
+          const result = response.result
+          const videos = result.relatedVideos
 
           /* if (errors.length > 0) {
             errors.forEach((el) => {
