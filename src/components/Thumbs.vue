@@ -70,7 +70,7 @@ export default {
     },
     openVideoModal (video) {
       this.$modal.show(VideoViewModal, {
-        videoId: video.id
+        videoId: video.id || 0
       }, this.modalOptions/* , {
           'opened': this.onModalOpened,
           'closed': this.onModalClosed

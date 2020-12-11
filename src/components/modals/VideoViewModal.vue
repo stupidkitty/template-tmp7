@@ -1,9 +1,11 @@
 <script>
-import Thumbs from '@/components/Thumbs.vue'
-import ModalControlBar from '@/components/modals/ModalControlBar.vue'
-import CategoriesList from '@/components/CategoriesList.vue'
-import VoteBox from '@/components/VoteBox.vue'
-import Humanizer from '@/js/helpers/Humanizer.js'
+import Thumbs from '../Thumbs.vue'
+import ModalControlBar from './ModalControlBar.vue'
+import CategoriesList from '../CategoriesList.vue'
+import VoteBox from '../VoteBox.vue'
+import FlagButton from '../FlagForm/FlagButton.vue'
+import FlagFormContainer from '../FlagForm/FlagFormContainer.vue'
+import { SecondsToTime, TimeAgo, CompactNumber } from '../../js/helpers/Formatters.js'
 
 export default {
   name: 'VideoViewModal',
@@ -12,11 +14,14 @@ export default {
     ModalControlBar,
     CategoriesList,
     Thumbs,
-    VoteBox
+    VoteBox,
+    FlagButton,
+    FlagFormContainer
   },
   props: {
     videoId: {
       type: Number,
+      validator: prop => typeof prop === 'number' || prop === null,
       default: 0
     }
   },
@@ -60,13 +65,13 @@ export default {
   },
   computed: {
     duration () {
-      return Humanizer.seconds2time(this.video.duration)
+      return SecondsToTime(this.video.duration)
     },
     views () {
-      return Humanizer.compactNumber(this.video.views)
+      return CompactNumber(this.video.views)
     },
     publishedAtHumanized () {
-      return Humanizer.timeAgo(this.video.publishedAt)
+      return TimeAgo(this.video.publishedAt)
     }
   },
   methods: {

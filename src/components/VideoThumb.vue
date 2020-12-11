@@ -1,7 +1,7 @@
 <script>
-import CategoriesList from '@/components/CategoriesList.vue'
-import VideoPreview from '@/components/VideoPreview.vue'
-import Humanizer from '@/js/helpers/Humanizer.js'
+import CategoriesList from './CategoriesList.vue'
+import VideoPreview from './VideoPreview.vue'
+import { SecondsToTime, TimeAgo, CompactNumber } from '../js/helpers/Formatters.js'
 
 export default {
   name: 'VideoThumb',
@@ -21,13 +21,13 @@ export default {
   },
   computed: {
     duration () {
-      return Humanizer.seconds2time(this.video.duration)
+      return SecondsToTime(this.video.duration)
     },
     views () {
-      return Humanizer.compactNumber(this.video.views)
+      return CompactNumber(this.video.views)
     },
     publishedAtHumanized () {
-      return Humanizer.timeAgo(this.video.publishedAt)
+      return TimeAgo(this.video.publishedAt)
     },
     likesPercent () {
       if (this.video.dislikes === 1) {
