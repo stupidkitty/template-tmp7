@@ -51,6 +51,10 @@
       cursor: pointer;
       fill: #34c9ff;
     }
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__close-icon {
