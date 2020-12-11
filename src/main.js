@@ -7,7 +7,8 @@ import Vue from 'vue'
 import VModal from 'vue-js-modal'
 import VideoViewModal from '@/components/modals/VideoViewModal.vue'
 import ScrollToTop from '@/components/ui/ScrollToTop.vue'
-// import FlagButton from '@/components/ui/FlagButton.vue'
+import FlagButton from './components/FlagForm/FlagButton.vue'
+import FlagFormContainer from './components/FlagForm/FlagFormContainer.vue'
 // import SuggestCategories from '@/components/SuggestCategories.vue'
 // import SuggestModels from '@/components/SuggestModels.vue'
 import Thumbs from '@/components/Thumbs.vue'
@@ -27,7 +28,8 @@ Vue.prototype.$eventHub = new Vue()
 new Vue({
   components: {
     ScrollToTop,
-    // FlagButton,
+    FlagButton,
+    FlagFormContainer,
     // SuggestCategories,
     // SuggestModels,
     VoteBox,
