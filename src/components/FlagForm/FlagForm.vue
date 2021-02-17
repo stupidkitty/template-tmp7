@@ -33,7 +33,7 @@
 
     <footer class="flag-form__footer" v-if="reported === false">
       <button class="btn btn-primary flag-form__btn" @click="submitReport()" v-if="reported === false">Отправить</button>
-      <button class="btn btn-primary ml-2 flag-form__btn" @click="close()">Закрыть</button>
+      <button class="btn btn-primary flag-form__btn" @click="close()">Закрыть</button>
     </footer>
   </div>
 </template>
