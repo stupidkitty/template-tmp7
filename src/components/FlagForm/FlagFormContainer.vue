@@ -37,7 +37,6 @@ export default {
 
 <style lang="scss">
 .flag-form-container {
-  padding: 10px 0;
   overflow: hidden;
   max-height: 500px;
 }
