@@ -1,20 +1,20 @@
-import '@/assets/scss/main.scss'
+import './assets/scss/main.scss'
 
-import AppOpt from '@/js/AppOpt.js'
+import AppOpt from './js/AppOpt.js'
 import 'whatwg-fetch'
 import Vue from 'vue'
 // import ClipboardJS from 'clipboard'
 import VModal from 'vue-js-modal'
-import VideoViewModal from '@/components/modals/VideoViewModal.vue'
-import ScrollToTop from '@/components/ui/ScrollToTop.vue'
+import VideoViewModal from './components/modals/VideoViewModal.vue'
+import ScrollToTop from './components/ui/ScrollToTop.vue'
 import FlagButton from './components/FlagForm/FlagButton.vue'
 import FlagFormContainer from './components/FlagForm/FlagFormContainer.vue'
-// import SuggestCategories from '@/components/SuggestCategories.vue'
-// import SuggestModels from '@/components/SuggestModels.vue'
-import Thumbs from '@/components/Thumbs.vue'
-import VoteBox from '@/components/VoteBox.vue'
-import VideoPreview from '@/components/VideoPreview.vue'
-import Rotator from '@/js/Rotator.js'
+// import SuggestCategories from './components/SuggestCategories.vue'
+// import SuggestModels from './components/SuggestModels.vue'
+import Thumbs from './components/Thumbs.vue'
+import VoteBox from './components/VoteBox.vue'
+import VideoPreview from './components/VideoPreview.vue'
+import Rotator from './js/Rotator.js'
 
 // import tippy from 'tippy.js'
 // import 'tippy.js/dist/tippy.css'
@@ -30,12 +30,12 @@ new Vue({
     ScrollToTop,
     FlagButton,
     FlagFormContainer,
-    // SuggestCategories,
-    // SuggestModels,
     VoteBox,
     VideoPreview,
     VideoViewModal,
     Thumbs
+    // SuggestCategories,
+    // SuggestModels
   },
   created () {
     if (AppOpt.Rotator.enabled) {
@@ -46,7 +46,7 @@ new Vue({
       })
 
       this.$eventHub.$on('thumb-click', (event, video) => {
-        const data = window.btoa(JSON.stringify({ id: video.id, imageId: video.imageId }))
+        const data = window.btoa(JSON.stringify(video))
 
         Rotator.registerVideoClick(data)
       })
