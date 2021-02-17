@@ -24,7 +24,7 @@ export default {
       return SecondsToTime(this.video.duration)
     },
     views () {
-      return CompactNumber(this.video.views)
+      return CompactNumber(this.video.views, 1)
     },
     publishedAtHumanized () {
       return TimeAgo(this.video.publishedAt)
