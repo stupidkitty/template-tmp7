@@ -1,7 +1,7 @@
 <script>
 import CategoriesList from './CategoriesList.vue'
 import VideoPreview from './VideoPreview.vue'
-import { SecondsToTime, TimeAgo, CompactNumber } from '../js/helpers/Formatters.js'
+import { SecondsToTime, TimeAgo, CompactNumber, LikesPercent } from '../js/helpers/Formatters.js'
 
 export default {
   name: 'VideoThumb',
@@ -30,13 +30,7 @@ export default {
       return TimeAgo(this.video.publishedAt)
     },
     likesPercent () {
-      if (this.video.dislikes === 1) {
-        return 100
-      }
-
-      const likesPercent = (this.video.likes / (this.video.likes + this.video.dislikes)) * 100
-
-      return Number.parseInt(likesPercent, 10)
+      return LikesPercent(this.video.likes, this.video.dislikes)
     }
   },
   methods: {
