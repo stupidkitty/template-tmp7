@@ -22,7 +22,7 @@
     line-height: 1;
     transition: box-shadow .2s ease;
 
-    &:placeholder {
+    &::placeholder {
       color: #ccc;
     }
 
@@ -39,6 +39,7 @@
 
   &__btn {
     box-shadow: none;
+    margin-left: 0.5rem;
 
     &:focus,
     &:active {
@@ -91,6 +92,7 @@
   }
 }
 
+/* возможно надо добавить 10px слева и справа */
 .flag-form-container {
   padding: 0 10px;
 }
