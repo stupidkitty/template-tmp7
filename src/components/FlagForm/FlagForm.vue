@@ -15,8 +15,15 @@
       <ul class="flag-reason-list">
         <li v-for="(reason, index) in reasonTypes" :key="index" class="flag-reason-list__reason" @click="selectReason(reason)">
           <label class="flag-reason-list__label">
-            <input class="flag-reason-list__radio" type="radio" name="flag_type" :value="reason.type"><span>{{ reason.label }}</span>
+            <input class="flag-reason-list__radio" type="radio" name="flag_type"><span>{{ reason.label }}</span>
           </label>
+          <ul class="flag-reason-list" v-if="reason === selectedReason && reason.items.length > 0">
+            <li v-for="(reasonItem, index) in reason.items" :key="index" class="flag-reason-list__reason" @click.prevent="selectSubReason(reasonItem)">
+              <label class="flag-reason-list__label">
+                <input class="flag-reason-list__radio" type="radio" name="flag_type_detail" :checked="reasonItem === selectedSubReason"><span>{{ reasonItem.label }}</span>
+              </label>
+            </li>
+          </ul>
         </li>
       </ul>
 
@@ -57,16 +64,29 @@ export default {
       selectedReasonType: {},
       errors: [],
       reported: false,
+      selectedReason: {},
+      selectedSubReason: {},
       reasonTypes: [
         {
           type: 'inappropriate',
           label: 'Нежелательный контент',
-          comment: 'Сцены насилия, реальный инцест, акты дефекации и т.д.'
+          comment: 'Сцены насилия, реальный инцест, акты дефекации и т.д.',
+          items: []
         },
-        { type: 'underage', label: 'Несовешеннолетние актеры', comment: '' },
-        { type: 'broken', label: 'Видео не проигрывается', comment: '' },
-        { type: 'privacy', label: 'Правообладание\\копирайт (Требуется email)', comment: '' },
-        { type: 'other', label: 'Другое (укажите причину)', comment: '' }
+        { type: 'underage', label: 'Несовешеннолетние актеры', comment: '', items: [] },
+        {
+          type: 'broken',
+          label: 'Проблемы с воспроизведением',
+          comment: '',
+          items: [
+            { type: 'broken.notload', label: 'Видео не работает', comment: '' },
+            { type: 'broken.slow', label: 'Тормозит загрузка', comment: '' },
+            { type: 'broken.broken', label: 'Битое видео', comment: 'Контент отображается частично, обрывается, имеются артефакты' },
+            { type: 'broken.other', label: 'Другое (укажите в комментарии)', comment: '' }
+          ]
+        },
+        { type: 'privacy', label: 'Правообладание\\копирайт (Требуется email)', comment: '', items: [] },
+        { type: 'other', label: 'Другое (укажите причину)', comment: '', items: [] }
       ]
     }
   },
@@ -81,25 +101,32 @@ export default {
       }, 3000)
     })
   },
+  watch: {
+    selectedReason (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        this.selectedSubReason = {}
+      }
+    }
+  },
   methods: {
     close () {
       this.$emit('close')
       this.$root.$emit('flag-close')
     },
-    submitReason () {
-      this.clearErrors()
-      this.submitReport()
-    },
-    isReasonTypeSelected () {
-      return this.reasonTypes.indexOf(this.selectedReasonType) !== -1
+    isReasonSelected () {
+      return this.reasonTypes.indexOf(this.selectedReason) !== -1
     },
     isValidEmail (email) {
       const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
       return re.test(String(email).toLowerCase())
     },
-    selectReason (reasonType) {
-      this.selectedReasonType = reasonType
+    selectReason (reason) {
+      this.selectedReason = reason
+    },
+
+    selectSubReason (subReason) {
+      this.selectedSubReason = subReason
     },
     hasErrors () {
       return this.errors.length > 0
@@ -110,20 +137,26 @@ export default {
     resetData () {
       this.reason = ''
       this.errors = []
+      this.selectedReason = {}
+      this.selectedSubReason = {}
     },
     isValidForm () {
       this.clearErrors()
 
-      if (!this.isReasonTypeSelected()) {
+      if (!this.isReasonSelected()) {
         this.errors.push('Выберите один из вариантов для жалобы')
       }
 
-      if (this.selectedReasonType.type === 'privacy' && !this.isValidEmail(this.email)) {
+      if (this.selectedReason.type === 'privacy' && !this.isValidEmail(this.email)) {
         this.errors.push('Укажите вашу электронную почту')
       }
 
-      if (this.selectedReasonType.type === 'other' && this.reason.trim() === '') {
+      if (this.selectedReason.type === 'other' && this.reason.trim() === '') {
         this.errors.push('Укажите причину вашей жалобы')
+      }
+
+      if (this.selectedReason.items.length > 0 && Object.keys(this.selectedSubReason).length === 0) {
+        this.errors.push('Укажите причину более точно')
       }
 
       return !this.hasErrors()
@@ -133,16 +166,23 @@ export default {
         return
       }
 
+      let subReason = {}
+      if (Object.keys(this.selectedSubReason).length !== 0) {
+        subReason = {
+          type: this.selectedSubReason.type,
+          label: this.selectedSubReason.label
+        }
+      }
+
       const report = {
-        type: this.selectedReasonType.type,
+        type: this.selectedReason.type,
         reason: this.reason,
+        subReason: subReason,
         email: this.email,
         id: this.videoId,
         title: document.title,
         url: document.location.href
       }
-
-      this.$emit('reported')
 
       fetch(config.abuseUrl, {
         cache: 'no-cache',

@@ -38,7 +38,7 @@ export default {
 <style lang="scss">
 .flag-form-container {
   overflow: hidden;
-  max-height: 500px;
+  max-height: 600px;
 }
 
 .slide-enter-active {
@@ -48,7 +48,6 @@ export default {
 }
 
 .slide-leave-active {
-  padding: 0;
   transition: all 0.3s ease-out;
   animation-duration: 0.3s;
   animation-name: slideout;
