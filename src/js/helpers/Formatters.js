@@ -31,6 +31,12 @@ export function CompactNumber (value, fixed = 0) {
     return null
   }
 
+  value = Number(value)
+
+  if (isNaN(value)) {
+    return '0'
+  }
+
   if (value === 0) {
     return '0'
   }
