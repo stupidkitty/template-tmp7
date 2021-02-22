@@ -145,18 +145,30 @@ export default {
 
       if (!this.isReasonSelected()) {
         this.errors.push('Выберите один из вариантов для жалобы')
+
+        return false
       }
 
       if (this.selectedReason.type === 'privacy' && !this.isValidEmail(this.email)) {
         this.errors.push('Укажите вашу электронную почту')
       }
 
+      if (this.selectedReason.type === 'privacy' && this.reason.trim() === '') {
+        this.errors.push('Опишите текстом причину вашей жалобы')
+      }
+
       if (this.selectedReason.type === 'other' && this.reason.trim() === '') {
-        this.errors.push('Укажите причину вашей жалобы')
+        this.errors.push('Опишите текстом причину вашей жалобы')
       }
 
       if (this.selectedReason.items.length > 0 && Object.keys(this.selectedSubReason).length === 0) {
         this.errors.push('Укажите причину более точно')
+      }
+
+      if (this.selectedReason.items.length > 0 && Object.keys(this.selectedSubReason).length > 0) {
+        if (this.selectedSubReason.type === 'broken.other' && this.reason.trim() === '') {
+          this.errors.push('Опишите текстом причину вашей жалобы')
+        }
       }
 
       return !this.hasErrors()
