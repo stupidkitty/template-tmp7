@@ -1,4 +1,7 @@
 <script>
+
+import { LikesPercent } from '../js/helpers/Formatters'
+
 export default {
   name: 'VoteBox',
   template: '#like-box-template',
@@ -27,16 +30,18 @@ export default {
     if (votedVideos !== null) {
       this.votedVideos = votedVideos
     }
+
+    this.$on('voted', () => this.registerVote())
   },
   watch: {
     iLikes: {
-      handler: function () {
+      handler () {
         this.likes = this.iLikes
       },
       immediate: true
     },
     iDislikes: {
-      handler: function () {
+      handler () {
         this.dislikes = this.iDislikes
       },
       immediate: true
@@ -44,18 +49,12 @@ export default {
   },
   computed: {
     likesPercent () {
-      const totalVotes = this.likes + this.dislikes
-
-      if (totalVotes === 0) {
-        return 0
-      }
-
-      return Math.round(this.likes / totalVotes * 100, -1)
+      return LikesPercent(this.likes, this.dislikes)
     }
   },
   methods: {
     voteLike () {
-      if (!this.setVoted()) {
+      if (this.isVoted() || isNaN(Number(this.videoId))) {
         return
       }
 
@@ -65,9 +64,22 @@ export default {
         method: 'PUT',
         cache: 'no-cache'
       })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText)
+          }
+
+          return response
+        })
+        .then(() => {
+          this.$emit('voted')
+        })
+        .catch((err) => {
+          console.error(err)
+        })
     },
     voteDislike () {
-      if (!this.setVoted()) {
+      if (this.isVoted() || isNaN(Number(this.videoId))) {
         return
       }
 
@@ -77,19 +89,26 @@ export default {
         method: 'PUT',
         cache: 'no-cache'
       })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText)
+          }
+
+          return response
+        })
+        .then(() => {
+          this.$emit('voted')
+        })
+        .catch((err) => {
+          console.error(err)
+        })
     },
     isVoted () {
       return this.votedVideos.indexOf(this.videoId) !== -1
     },
-    setVoted () {
-      if (!this.isVoted()) {
-        this.votedVideos.push(this.videoId)
-        this.setToStorage('votedVideos', this.votedVideos)
-
-        return true
-      }
-
-      return false
+    registerVote () {
+      this.votedVideos.push(this.videoId)
+      this.setToStorage('votedVideos', this.votedVideos)
     },
 
     getFromStorage (key) {
