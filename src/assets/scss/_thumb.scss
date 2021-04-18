@@ -1,4 +1,7 @@
 .thumb {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background-color: $bg2;
 
   &:hover {
@@ -10,6 +13,8 @@
   }
 
   &__link {
+    display: block;
+
     &:hover {
       text-decoration: none;
       cursor: pointer;
@@ -124,6 +129,7 @@
   }
 
   &__info {
+    flex-grow: 1;
     padding: 0 5px 3px;
     font-size: 12px;
     text-align: left;
