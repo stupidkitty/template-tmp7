@@ -18,10 +18,10 @@
     <slot></slot>
     <play-preview-button :css-class="playButton.cssClass" :is-play-now="display" @click="togglePreviewPlay" v-if="playButton.enabled">
       <template v-slot:play>
-        <img src="@/svg/thumb-preview-start.svg" width="16" height="16">
+        <img src="@/assets/svg/thumb-preview-start.svg" width="16" height="16" alt="">
       </template>
       <template v-slot:stop>
-        <img src="@/svg/thumb-preview-stop.svg" width="16" height="16">
+        <img src="@/assets/svg/thumb-preview-stop.svg" width="16" height="16" alt="">
       </template>
     </play-preview-button>
   </div>
@@ -108,7 +108,7 @@ export default {
       }
     },
     onPreviewMouseOut (event) {
-      let e = event.toElement || event.relatedTarget
+      const e = event.toElement || event.relatedTarget
 
       this.removeDefferedTimer()
 
